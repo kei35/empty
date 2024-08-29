@@ -4,11 +4,14 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install GCC
-      run: sudo apt-get install -y g++
     - name: Compile
-      run: g++ -o my_executable main.cpp
+      run: g++ -o my_executable.exe main.cpp
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my_executable
+        path: my_executable.exe
