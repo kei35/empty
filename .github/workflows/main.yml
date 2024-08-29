@@ -1,0 +1,14 @@
+name: Compile C++ Code
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install GCC
+      run: sudo apt-get install -y g++
+    - name: Compile
+      run: g++ -o my_executable main.cpp
